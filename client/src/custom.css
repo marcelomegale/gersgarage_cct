@@ -1,0 +1,817 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+body{
+    font-family: Montserrat;
+    padding: 68px 0 0 0;
+    margin: 0;
+}
+
+h1{
+    font-size: 3em;
+    font-weight: lighter;
+    margin: 20px 0;
+    font-family: Montserrat;
+    margin-bottom: 80px;
+}
+
+h2{
+    font-size: 1.8em;
+    font-weight: 500;
+    margin: 20px 0 60px 0;
+    font-family: Montserrat;
+}
+
+/* Estilos personalizados para o ícone de chevron */
+.custom-select::-ms-expand {
+    display: none;
+  }
+  
+  .custom-select::after {
+    content: "▼";
+    font-size: 32px; /* Ajuste o tamanho do ícone conforme necessário */
+    color: #555; /* Cor do ícone */
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+/* select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bcbcbc;
+
+} */
+
+/*.container-fluid{*/
+/*    padding-left: 0;*/
+/*    padding-right: 0;*/
+/*}*/
+
+.bg_ggHeader {
+    background-color: #FFF;
+}
+
+.header-shadow{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/*
+.nav-tabs {
+  --bs-nav-tabs-border-width: 1px;
+  --bs-nav-tabs-border-color: #dee2e6;
+  --bs-nav-tabs-border-radius: 0.375rem;
+  --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
+  --bs-nav-tabs-link-active-color: #495057;
+  --bs-nav-tabs-link-active-bg: #fff;
+  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #fff;
+  border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+*/
+.btn-warning {
+    color: #FFF;
+    --bs-btn-color: #FFF;
+    --bs-btn-bg: #FFA500;
+    --bs-btn-border-color: #FFA500;
+    --bs-btn-hover-color: #FFF;
+    --bs-btn-hover-bg: #808080;
+    --bs-btn-hover-border-color: #808080;
+    --bs-btn-focus-shadow-rgb: 217,164,6;
+    --bs-btn-active-color: #FFF;
+    --bs-btn-active-bg: #808080;
+    --bs-btn-active-border-color: #808080;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #FFF;
+    --bs-btn-disabled-bg: #FFA500;
+    --bs-btn-disabled-border-color: #FFA500;
+}
+
+.btn-outline-warning {
+    --bs-btn-color: #FFA500;
+    --bs-btn-border-color: #FFA500;
+    --bs-btn-hover-color: #FFF;
+    --bs-btn-hover-bg: #FFA500;
+    --bs-btn-hover-border-color: #FFA500;
+    --bs-btn-focus-shadow-rgb: 255,193,7;
+    --bs-btn-active-color: #FFF;
+    --bs-btn-active-bg: #FFA500;
+    --bs-btn-active-border-color: #FFA500;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #FFA500;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #FFA500;
+    --bs-gradient: none;
+}
+
+.GGcopyrigths, .GGicons{
+    color: #fff;
+}
+
+.GGcontact{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: montserrat;
+    padding: 10px 0;
+}
+
+.GGfolow{
+    font-weight: bold;
+}
+
+.footer{
+    background-color: #FFA500;
+    padding: 40px 80px 0 80px;
+}
+.GGFooterLine1{
+    padding-bottom: 40px;
+}
+.itenContact{
+    padding: 10px 0;
+}
+
+.GGfooterBar{
+    padding: 20px 0;
+    border-top: 1px solid white;
+}
+
+.GGitenContact{
+    display:inline ;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#navbarNav{
+    display: flex;
+    justify-content: center;
+}
+
+#navbarNav .nav-link:hover{
+    color: #FFA500;
+    font-weight: 500;
+}
+#navbarNav .nav-link:active{
+    color: #FFA500;
+    font-weight: 500;
+}
+#navbarNav .nav-link{
+    color: #4F4F4F;
+    font-family: 'Montserrat', sans-serif;
+}
+/* --------------- */
+
+/* CLASSES BODY A*/
+
+#bodyA{
+    background-color: #F5F5F5;
+    padding: 40px 80px;
+}
+
+#bodyA .GGtitle{
+font-size: 2.3em;
+justify-content: center;
+margin: 40px 0;
+}
+
+.GGtitleCard{
+    color: #FFA500;
+    font-weight: bold;
+    font-size: 1.4;
+}
+
+.GGtitleCard{
+    font-size: 1.2em;
+}
+
+#bodyA #GGcardInfo{
+    margin-bottom: 80px;
+}
+
+#bodyA #GGcardInfo div{
+    margin: 14px 0;
+}
+/* --------------- */
+
+/* CLASSES BODY B*/
+
+#bodyB{
+    background-color: #FFF;
+    padding: 80px;
+}
+
+#bodyB #GGcardInfo div{
+    margin: 14px 0;
+}
+/* --------------- */
+
+/* CLASSES BODY C*/
+
+#bodyC{
+    background-color:#F5F5F5;
+    padding: 80px;
+}
+
+#bodyC #GGcardInfo div{
+    margin: 14px 0;
+}
+/* --------------- */
+
+/* CLASSES BODY D*/
+
+#bodyD{
+    background-color:#FFF;
+    padding: 80px;
+}
+
+#bodyD #GGcardInfo div{
+    margin: 14px 0;
+}
+
+#bodyD .GGtitle{
+    font-size: 2.3em;
+    justify-content: center;
+    margin: 40px 0;
+    color: #FFA500;
+}
+
+#bodyD .GGtext{
+    font-size: 1.7em;
+    justify-content: center;
+    margin: 80px 0;
+    color: #4F4F4F;
+}
+
+#bodyD .GGBrands{
+    justify-content: center;
+    padding: 40px 0;
+}
+/* --------------- */
+
+/* CLASSES BODY E*/
+
+#bodyE{
+    background-color:#F5F5F5;
+    padding: 80px;
+}
+
+#bodyE .GGtext{
+    font-size: 1.7em;
+    justify-content: center;
+    margin: 80px 0;
+    color: #4F4F4F;
+}
+
+
+#ImgPg, #col2{
+    padding: 0;
+}
+
+#col1 {
+    padding: 0 30px;
+}
+
+.PgTitle{
+    font-size: 3em;
+    margin: 20px 0;
+}
+
+.PgSubTitle{
+    font-size: 1.8em;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.PgText{
+    font-size: 1.3em;
+    margin: 20px 0 60px 0;
+}
+/* --------------- */
+
+/* LOGIN STYLES */
+
+#login{
+    padding: 0 160px;
+    font-family: Montserrat, sans-serif;
+}
+
+#login .form-control, button{
+    margin-top: 8px;
+}
+
+#login .GGloginForm{
+    border: 1px solid #FFA500;
+    padding: 40px;
+    border-radius: 16px;
+    background-color: #F5F5F5;
+}
+
+.bot{
+    margin-bottom: 20px;
+}
+.form-error{
+    color: red;
+    font-size: 0.7em;
+}
+
+/*
+#login button {
+    margin: 20px 0;
+}
+
+#login .GGtitleCard{
+    margin-bottom: 30px;
+}
+*/
+
+.GGtitleCard{
+    margin-bottom: 16px;
+}
+
+.GroupBut{
+    margin-top: 30px;
+}
+
+.link-primary{
+    color: #FFA500;
+}
+
+.link-primary:hover{
+    color: #4F4F4F;
+}
+/* --------------- */
+
+/* REGISTER STYLES */
+
+#register{
+    padding: 0 40px;
+}
+
+#register .GGform{
+    border: 1px solid #FFA500;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+#register .GGtitleCard{
+    color: #4F4F4F;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+#exampleSelectMulti{
+    width: 100%;
+}
+
+/* --------------- */
+
+/* SERVICE STYLES */
+
+.btn-lg{
+    font-size: 16px;
+    padding: 10px 40px;
+}
+
+.box-price{
+    margin: 30px 0;
+    border: 1px solid #4F4F4F;
+    border-radius: 10px;
+    padding: 10px 40px;
+}
+
+.box-price button{
+    padding: 10px 80px;
+}
+
+.fontPrice{
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.ServList{
+    padding: 0 0 0 20px;
+}
+
+.ServList li{
+    list-style:disc;
+}
+
+.picService{
+    display: flex;
+    justify-content: right;
+}
+.cl_Button{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+/* --------------- */
+
+/* CONTACT STYLES */
+
+#Contact{
+    padding: 0 40px;
+}
+
+#Contact .GGform{
+    border: 1px solid #FFA500;
+    padding: 10px 40px;
+    border-radius: 16px;
+}
+
+#Contact .GGform li{
+    margin: 30px 0;
+
+}
+
+#Contact .GGicons{
+    color: #FFA500;
+    padding: 0;
+}
+
+#Contact .GGtitleCard{
+    color: #4F4F4F;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+/* --------------- */
+
+/* BANNER STYLES */
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Proporção de aspecto 16:9 (ajuste conforme necessário) */
+}
+
+.banner-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/slide1.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* Opcional: ajuste o valor para controlar a sobreposição */
+  }
+  
+
+/* .image-background {
+    background-image: url("./assets/img_Booking.jpeg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-wrapper {
+    background-image: url("./assets/img_Booking.jpeg");
+    background-size: cover;
+  } */
+  
+
+/* --------------- */
+
+#exampleSelectMulti{
+    width: 100%;
+}
+
+#boxInfo{
+    margin: 60px 0;
+}
+
+.border-teste{
+    border: 1px solid red;
+}
+
+
+.app-content {
+    display: flex;
+    transition: all 0.3s ease;
+  }
+  
+  .app-content.expanded {
+    margin-left: 250px; /* Ajuste o valor de acordo com a largura desejada */
+  }
+  
+  .user-profile {
+    width: 250px; /* Ajuste o valor de acordo com a largura desejada */
+    border-radius: 16px;
+    padding: 0px;
+    margin: 30px auto;
+  }
+
+  .espaco-retratil{
+    padding: 0;
+    background-color: #808080;
+  }
+
+  /* ...outros estilos... */
+
+.app-content {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .column {
+    flex: 0 0 20%; /* Largura da coluna ajustável conforme necessário */
+    transition: flex 0.5s ease-in-out;
+  }
+  
+  .column-open {
+    flex: 0 0 40%; /* Largura da coluna expandida ajustável conforme necessário */
+  }
+  
+  /* ...outros estilos... */
+  
+  .ProfileGG{
+    margin-bottom: 30px;
+  }
+
+  .userLoginGG{
+    border: 1px solid #4F4F4F;
+    padding: 6px 20px
+  }
+  .userLoginGG img{
+    width: 24px;
+  }
+
+/* --------------- */
+
+/* BOOKING STYLES */
+
+.CardTop{
+    padding: 0;
+}
+
+.BkContent{
+    padding: 0;
+    margin: 0;
+}
+
+.GGcard{
+    padding: 30px;
+}
+
+.BdCard{
+    border: 1px solid #FFA500;
+    padding: 4px;
+}
+
+.BookingPrice{
+    background-color: #FFA500;
+    color: #F5F5F5;
+    font-weight: bold;
+    display: flex;
+    justify-content:center;
+    padding: 10px;
+}
+
+.BookingTit{
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #FFA500;
+    padding: 10px;
+}
+
+.BookingTxt{
+    padding: 16px 10px;
+}
+
+.paddingTest{
+    padding: 30px;
+}
+
+.image-wrapper {
+    height: 100%; /* Ajuste a altura máxima conforme necessário */
+}
+  
+.image-wrapper img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.BoxCard{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* --------------- */
+
+/* MANAGEMENT/INVOICE STYLES */
+
+#table .btn, button{
+    padding: 0;
+    margin: 0;
+}
+
+.dataInvoice li{
+    display: inline-block;
+    margin-right: 10px; /* Adicione um espaçamento horizontal opcional entre os itens */
+}
+
+#partList, #closeInvoice{
+    border: 1px solid #4F4F4F;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    margin-right: 40px;
+}
+
+#dataInvoice ul{
+    margin-bottom: 0;
+}
+
+#table ul{
+    margin-bottom: 0;
+}
+
+#table ul li{
+    margin-right: 60px;
+}
+.cardInvoice{
+    /* margin: 0 10px; */
+    padding: 10px;
+}
+
+.cardTitle{
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700    ;
+}
+
+.borderTable{
+    border: 1px solid #bcbcbc;
+    border-radius: 10px;
+}
+
+.GGtable{
+    /* background-color: #d1d0d0; */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    margin-right: 40px;
+}
+
+.lft{
+    text-align: left;
+}
+.rgt{
+    text-align: right;
+}
+.cnt{
+    text-align: center;
+}
+
+.reservatioDetails{
+    border-radius: 10px;
+    background-color: #d1d0d0;
+    padding: 10px 40px;
+    margin-bottom: 20px;
+}
+
+.dashboards{
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    padding: 0 20px;
+}
+
+.extrasArea{
+    border-radius: 10px;
+    border: 1px solid #bcbcbc;
+    padding: 10px 0;
+}
+
+.tableList td{
+    padding-left: 20px;
+}
+
+#staffBoard{
+    margin-bottom: 30px;
+}
+
+.titTableService{
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+/* --------------- */
+
+/* MODAL / FORMS  STYLES */
+
+.GGtitOrange{
+    color: #FFA500;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.Bdform{
+    border: 1px solid #FFA500;
+    padding: 30px;
+    margin: 10px;
+    font-family: Montserrat;
+}
+
+#GGform Label{
+    color: #4F4F4F;
+    font-size: 1;
+    font-weight: 600;
+}
+
+#GGform .FormGroup{
+    padding-bottom: 10px;
+}
+
+#GGform input[type="date"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #efefef;
+
+}
+
+
+#table{
+    padding: 0 40px;
+}
+
+.Bdteste{
+    border-radius: 20px;
+}
+
+.bgSelect{
+    background-color: #ffeece;
+}
+
+.butAdd{
+    padding-bottom: 18px;
+}
+
+#Dashboards .butAdd Button{
+    padding: 5px;
+}
+
+.cardStaff{
+    padding: 10px;
+    background-color: #efefef;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.cardStaff span{
+    font-size: 0.8em;
+}
+
+/* --------------- */
+
+
+.testRed{
+    background-color: red;
+}
+.testBlue{
+    background-color: blue;
+}
+.testGreen{
+    background-color: green;
+}
+.testGrey{
+    background-color: gray;
+} 
+
+.bgImg{
+    background-color: #4F4F4F;
+}
+    .coluna-10 {
+    width: 10%;
+  }
+
+  .coluna-90 {
+    width: 90%;
+  }
+  .GGtableData tr{
+    border-bottom: 1px solid #aeaeae;
+  }
+
+  .GGtableData td{
+    padding: 10px 20px 0 20px;
+  }
+
+  .profileContent{
+    margin-top: 60px;
+  }
