@@ -56,7 +56,7 @@ const Login = () => {
                 <div id='ImgPg' className='col-6'>
                     <img src={ImgLogin} alt="Wellcome" className='img-fluid'></img>
                 </div>
-                <div id='login' className='col-6 d-flex align-items-center testGrey'>
+                <div id='login' className='col-6 d-flex align-items-center'>
                     <div className="container">
                         <div id='loginForm' className='row GGloginForm'>
                             <div className='col'>
