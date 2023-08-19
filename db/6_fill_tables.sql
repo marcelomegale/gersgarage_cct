@@ -1,4 +1,4 @@
-use GARAGE_SQL;
+use GARAGE_SQL2;
 
 insert into BOOKING_TYPE (name, price, description)
 values ("Annual Service", 380, "At our garage, we offer an Annual Service to ensure your vehicle remains in optimal condition throughout the year. Our skilled technicians will perform a comprehensive inspection, checking vital components"),

@@ -1,4 +1,4 @@
-USE GARAGE_SQL;
+USE GARAGE_SQL2;
 
 update BOOKING_TYPE set timeslot_size = 2 where id = 3;
 

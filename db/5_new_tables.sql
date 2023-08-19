@@ -1,4 +1,4 @@
-use GARAGE_SQL;
+use GARAGE_SQL2;
 
 create table IF NOT EXISTS BOOKING_TYPE (
                               id int unsigned not null auto_increment,

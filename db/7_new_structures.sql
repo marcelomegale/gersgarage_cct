@@ -1,4 +1,4 @@
-use GARAGE_SQL;
+use GARAGE_SQL2;
 
 alter table BOOKING_TYPE
     add timeslot_size int default 1 null;
