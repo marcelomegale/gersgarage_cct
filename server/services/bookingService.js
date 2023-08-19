@@ -4,7 +4,7 @@ const config = require('../config')
 
 const fullGetQuery = `
         select b.id,
-               date,
+               DATE_FORMAT(b.date, '%d/%m/%Y') as date,
                concat(client.firstname, ' ', client.surname) as clientName,
                concat(vm.name, ' - ', vmn.name) as vehicleModel,
                v.register as vehicleRegister,
@@ -31,6 +31,7 @@ async function getAllByClient(userId) {
     const query = `
         ${fullGetQuery}
         where client.id = ?
+        ORDER BY b.date 
     `;
 
     const rows = await db.query(query, [userId]);
@@ -69,11 +70,11 @@ async function getAll() {
 
 async function getAllStaffOrders() {
     const query = `
-        select up.id, up.userName as name, count(staff_id) as count
+        select up.id, up.firstname as name, count(staff_id) as count
         from USER_PROFILE up 
         left join BOOKING b on b.staff_id = up.id
         where up.profile_type_id = 2
-        group by up.id, up.userName
+        group by up.id, up.username
     `;
 
     const rows = await db.query(query, []);
@@ -97,7 +98,20 @@ async function getAllByStaff(userId) {
         items: data,
     }
 }
+async function getAllByStatus() {
+    const query = `
+        select  bs.id, bs.name
+             , (select count(*) from BOOKING b where b.booking_status_id = bs.id ) as count
+        from BOOKING_STATUS bs
+    `;
 
+    const rows = await db.query(query, []);
+    const data = helpers.emptyOrRows(rows);
+
+    return {
+        items: data,
+    }
+}
 async function getById(id) {
     const query = `
         ${fullGetQuery} 
@@ -268,7 +282,7 @@ async function validateCanAssign(staffId) {
     console.log(data, +totalTimeAvailable)
 
 
-    return (+totalTimeAvailable) >= 0;
+    return (+totalTimeAvailable) > 0;
 }
 
 module.exports = {
@@ -286,6 +300,7 @@ module.exports = {
     getBookingItemByCategoryId,
     updateStatus,
     assignStaff,
-    validateCanAssign
+    validateCanAssign,
+    getAllByStatus
 }
 

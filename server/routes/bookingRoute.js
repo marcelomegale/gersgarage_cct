@@ -53,6 +53,20 @@ router.get("/staff/orders", verifyToken, async (req, res, next) => {
         next(err);
     }
 });
+
+router.get("/status/orders", verifyToken, async (req, res, next) => {
+    try {
+        res.json(
+            success(
+                await db.getAllByStatus()
+            )
+        )
+    } catch (err) {
+        console.error(`Error while getting bookings by staff Data `, err.message);
+        next(err);
+    }
+});
+
 router.get("/staff/:id", verifyToken, async (req, res, next) => {
     try {
         res.json(

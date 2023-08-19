@@ -15,7 +15,9 @@ const Management = () => {
     const [modalStaff, setModalStaff] = useState(false);
     const [bookingsData, setBookingsData] = useState([]);
     const [staffData, setStaffData] = useState([]);
+    const [statusData, setStatusData] = useState([]);
 
+    // Methods for loading state
     const loadBookings = async () => {
         const response = await Axios.get(`/booking`);
         const bookings = response.data.data.items;
@@ -27,6 +29,13 @@ const Management = () => {
         setStaffData(staffOrders)
     }
 
+    const loadStatusOrders = async () => {
+        const response = await Axios.get(`/booking/status/orders`);
+        const statusOrders = response.data.data.items;
+        setStatusData(statusOrders)
+      }
+    
+    // Effect to run when load
     useEffect(() => {
         const fetchData = async () => {
             if (!user) return;
@@ -34,6 +43,7 @@ const Management = () => {
             try {
                 await loadBookings();
                 await loadStaffOrders();
+                await loadStatusOrders();
 
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -86,6 +96,7 @@ const Management = () => {
                     <h1>Management Area</h1>
                     <div className='dashboards'>
                         <div className='titTableService'>Scheduled services</div>
+                        {/* Linst booking */}
                         <table className="table table-striped table-bordered">
                             <thead>
                             <tr>
@@ -101,7 +112,7 @@ const Management = () => {
                             <tbody>
                             {bookingsData.map((row) => (
                                 <tr key={row.id}>
-                                    <td>{new Date(row.date).toDateString()}</td>
+                                    <td>{row.date}</td>
                                     <td>{row.clientName}</td>
                                     <td>{row.vehicleModel}</td>
                                     <td>{row.bookingType}</td>
@@ -146,6 +157,26 @@ const Management = () => {
                                 </tr>
                             ))}
                             </tbody>
+                        </table>
+                    </div>
+                    {/* tabela de status */}
+                    <div id='statusList' className="row GGtable">
+                        <div className='titTableService'>Status list</div>
+                        <table className="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th style={{width: '80%'}}>Status</th>
+                            <th style={{width: '10%'}} className='cnt'>Orders</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {statusData.map((row) => (
+                            <tr key={row.id}>
+                            <td>{row.name}</td>
+                            <td className='cnt'>{row.count}</td>
+                            </tr>
+                        ))}
+                        </tbody>
                         </table>
                     </div>
 
