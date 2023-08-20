@@ -2,9 +2,11 @@ import logo_gg from "../assets/logotype.png";
 import React, {useContext, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+import { FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { AuthContext } from "./AuthContext";
 import {Profiles} from "../utilities/Enums";
+import { BsPerson } from 'react-icons/bs';
+
 
 const Head = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -121,11 +123,11 @@ const Head = () => {
                     }
                     {(user != null) &&
                         <div>
-                            <span style={{marginRight: "5px"}}>
-                                welcome, {user.username}
+                            <span style={{marginRight: "30px"}}>
+                                <BsPerson size={(24)}/> {user.firstname}
                             </span>
                             <Link to="/login" onClick={() => { setUser(null); localStorage.clear() }}>
-                                <span style={{fontSize: "0.75em", textDecoration: "underline", color: "indianred"}}>Logout</span>
+                                <span style={{fontSize: "0.75em", textDecoration: "underline", color: "indianred"}}><FaSignOutAlt size={32} color="#FFA500"/></span>
                             </Link>
                         </div>
                     }
