@@ -124,7 +124,7 @@ const Head = () => {
                             <span style={{marginRight: "5px"}}>
                                 welcome, {user.username}
                             </span>
-                            <Link to="/login" onClick={() => { setUser(null) }}>
+                            <Link to="/login" onClick={() => { setUser(null); localStorage.clear() }}>
                                 <span style={{fontSize: "0.75em", textDecoration: "underline", color: "indianred"}}>Logout</span>
                             </Link>
                         </div>

@@ -17,7 +17,8 @@ h1{
     font-weight: lighter;
     margin: 20px 0;
     font-family: Montserrat;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+    color: #FFA500;
 }
 
 h2{
@@ -42,6 +43,7 @@ h2{
     right: 10px;
     transform: translateY(-50%);
   }
+
 
 /* select {
     padding: 10px;
@@ -618,7 +620,7 @@ margin: 40px 0;
 
 /* MANAGEMENT/INVOICE STYLES */
 
-#table .btn, button{
+.sideL .btn, button{
     padding: 0;
     margin: 0;
 }
@@ -640,11 +642,11 @@ margin: 40px 0;
     margin-bottom: 0;
 }
 
-#table ul{
+.sideL ul{
     margin-bottom: 0;
 }
 
-#table ul li{
+.sideL ul li{
     margin-right: 60px;
 }
 .cardInvoice{
@@ -669,6 +671,39 @@ margin: 40px 0;
     border-radius: 10px;
     margin-bottom: 4px;
     margin-right: 40px;
+}
+
+.statusList{
+    /* background-color: #d1d0d0; */
+    padding: 0px;
+    margin-right: 40px;
+}
+
+.statusCont{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.statusRow{
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    margin: 16px 0;
+    padding: 10px 0;
+    background-color: #FBFBFB;
+}
+
+.staNumber{
+    color: #FFA500;
+    font-weight: bold;
+    font-size: 1.7em;
+}
+
+.staFont{
+    font-size: 1.0em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 .lft{
@@ -713,6 +748,22 @@ margin: 40px 0;
     font-size: 1.2em;
 }
 
+.bdTable{
+    padding: 2px;
+    border: 1px solid #FFA500;
+    border-collapse:separate;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 0;
+}
+
+.algCT{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
 /* --------------- */
 
 /* MODAL / FORMS  STYLES */
@@ -748,9 +799,32 @@ margin: 40px 0;
 }
 
 
-#table{
-    padding: 0 40px;
+/* #table{
+    padding: 0 20px 40px 40px;
+} */
+
+#numbers{
+    border-left: 1px solid #808080;
+    padding: 20px 0 40px 40px;
+  }
+
+.sideL{
+    padding: 0 20px 40px 40px;
 }
+
+.sideR{
+    border-left: 1px solid #808080;
+    padding: 20px 0 40px 40px;
+}
+
+.headTable{
+    background-color:#FFA50026;
+    color: #FFA500;
+}
+
+/* .headTable th{
+border: 1px solid #FFF;
+} */
 
 .Bdteste{
     border-radius: 20px;
@@ -780,6 +854,9 @@ margin: 40px 0;
 
 /* --------------- */
 
+.testBorder{
+    border: 1px solid red;
+}
 
 .testRed{
     background-color: red;

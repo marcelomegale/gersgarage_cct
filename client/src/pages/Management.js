@@ -3,6 +3,7 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import {Label, Button} from 'reactstrap';
 import {Link, useLocation} from "react-router-dom";
 import {FaFolderOpen} from 'react-icons/fa';
+import { BsPlus } from 'react-icons/bs'; 
 import Axios from "axios";
 import {AuthContext} from "../components/AuthContext";
 import {ErrorMessage, Field, Formik, Form} from "formik";
@@ -91,21 +92,21 @@ const Management = () => {
         <div className='container-fluid'>
             {/*<pre>{JSON.stringify(routeState, null, 2)}</pre>*/}
             <div className='row'>
-                <div id='table' className='col-9'>
-                    {/* Content first collun */}
+                {/* Content first collun */}
+                <div className='col-9 sideL'>
                     <h1>Management Area</h1>
                     <div className='dashboards'>
                         <div className='titTableService'>Scheduled services</div>
                         {/* Linst booking */}
-                        <table className="table table-striped table-bordered">
+                        <table className="table table-striped table-bordered bdTable">
                             <thead>
-                            <tr>
+                            <tr className='headTable'>
                                 <th style={{width: '10%'}}>Date</th>
-                                <th style={{width: '26%'}}>Client</th>
+                                <th style={{width: '20%'}}>Client</th>
                                 <th style={{width: '17%'}}>Vehicle</th>
                                 <th style={{width: '14%'}}>Service</th>
                                 <th style={{width: '14%'}}>Staff</th>
-                                <th style={{width: '10%'}}>Status</th>
+                                <th style={{width: '16%'}}>Status</th>
                                 <th style={{width: '5%'}} className='cnt'>Edit</th>
                             </tr>
                             </thead>
@@ -129,55 +130,49 @@ const Management = () => {
                         </table>
                     </div>
                 </div>
-                <div className='col-3'>
-                    {/* Content first collun */}
-                    <h1>Numbers</h1>
+                {/* Content second collun */}
+                <div className='col-3 sideR'>
                     {/* tabela de Staffs */}
                     <div id='staffList' className="row GGtable">
-                        <div className='titTableService'>Staff management</div>
-                        <table className="table table-striped table-bordered">
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-10 algCT'>
+                                    <div className='titTableService '>Staff management</div>
+                                </div>
+                                <div className='col-2'>
+                                    <Button color="link" className="text-center" style={{cursor: "pointer"}} onClick={(e) => toggleModalStaff()}>
+                                            <BsPlus size={32} color='#FFA500' />
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                        <table className="table table-striped table-bordered bdTable">
                             <thead>
-                            <tr>
-                                <th style={{width: '80%'}}>Name</th>
-                                <th style={{width: '10%'}} className='cnt'>Orders</th>
-                            </tr>
+                                <tr className='headTable'>
+                                    <th style={{width: '80%'}}>Name</th>
+                                    <th style={{width: '10%'}} className='cnt'>Orders</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colSpan={2} className="text-center">
-                                    <Button color="link" className="text-center" style={{cursor: "pointer"}} onClick={(e) => toggleModalStaff()}>
-                                        Register new staff
-                                    </Button>
-                                </td>
-                            </tr>
-                            {staffData.map((row) => (
-                                <tr key={row.id}>
-                                    <td>{row.name}</td>
-                                    <td className='cnt'>{row.count}</td>
-                                </tr>
-                            ))}
+                                {staffData.map((row) => (
+                                    <tr key={row.id}>
+                                        <td>{row.name}</td>
+                                        <td className='cnt'>{row.count}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
                     {/* tabela de status */}
-                    <div id='statusList' className="row GGtable">
-                        <div className='titTableService'>Status list</div>
-                        <table className="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th style={{width: '80%'}}>Status</th>
-                            <th style={{width: '10%'}} className='cnt'>Orders</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <div id='statusList' className="statusList">
                         {statusData.map((row) => (
-                            <tr key={row.id}>
-                            <td>{row.name}</td>
-                            <td className='cnt'>{row.count}</td>
-                            </tr>
+                            <div className='container statusCont'>
+                                <div className='row col-12 statusRow'key={row.id}>
+                                    <div className='col-10 staFont'>{row.name}</div>
+                                    <div className='col-2 staNumber cnt'>{row.count}</div>
+                                </div>
+                            </div>
                         ))}
-                        </tbody>
-                        </table>
                     </div>
 
                 </div>
