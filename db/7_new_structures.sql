@@ -52,3 +52,8 @@ create view view_staff as
 select id, username as name from USER_PROFILE
 where profile_type_id = 2
   and active = 1;
+
+CREATE VIEW view_staff_by_bookings AS
+SELECT DISTINCT UP.id, up.firstname as name
+FROM USER_PROFILE up
+JOIN BOOKING B ON b.staff_id = up.id ;
