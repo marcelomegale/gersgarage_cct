@@ -220,7 +220,7 @@ const Invoice = () => {
         <div className='container-fluid'>
             <div className='row'>
                 {/* FIRST COLUMN */}
-                <div id='table' className='col-9'>
+                <div className='col-9 sideL'>
                     {/* personal data */}
                     <h1>
                         <Button style={{marginRight: "10px"}} color="white" onClick={e => handleBack()} title="Go back">
@@ -263,10 +263,10 @@ const Invoice = () => {
                                                     </FormGroup>
                                                 </div>
                                             </div>
-                                                <div style={{color: "indianred"}}>
-                                                    {errorStaff}
-                                                </div>
-                                            <Button color="warning" className='btn-lg w-100'  onClick={(e) => saveNewStaff(e)}>
+                                            <div style={{color: "indianred"}}>
+                                                {errorStaff}
+                                            </div>
+                                            <Button color="warning" outline className='btn-lg w-100'  onClick={(e) => saveNewStaff(e)}>
                                                 Change
                                             </Button>
                                         </>}
@@ -298,7 +298,7 @@ const Invoice = () => {
                                             <div style={{color: "indianred"}}>
                                                 {errorStatus}
                                             </div>
-                                            <Button color="warning" className='btn-lg w-100' onClick={(e) => saveNewStatus(e)}>
+                                            <Button color="warning" outline className='btn-lg w-100' onClick={(e) => saveNewStatus(e)}>
                                                 Change
                                             </Button>
                                         </>}
@@ -327,9 +327,7 @@ const Invoice = () => {
                                                         </FormGroup>
                                                     </div>
                                                     <div className='col-2 d-flex butAdd'>
-
-
-                                                        <Button color="warning" className='btn-lg mt-auto' disabled={user.profile_type_id == Profiles.Customer}
+                                                        <Button color="warning" outline className='btn-lg mt-auto' disabled={user.profile_type_id == Profiles.Customer}
                                                                 onClick={(e) => handleAddParts(e)}>
                                                             <FaPlus size={24}/>
                                                         </Button>
@@ -355,7 +353,7 @@ const Invoice = () => {
                                                         </FormGroup>
                                                     </div>
                                                     <div className='col-2 d-flex butAdd'>
-                                                        <Button color="warning" className='btn-lg mt-auto' disabled={user.profile_type_id == Profiles.Customer}
+                                                        <Button color="warning" outline className='btn-lg mt-auto' disabled={user.profile_type_id == Profiles.Customer}
                                                                 onClick={(e) => handleAddAccessories(e)}>
                                                             <FaPlus size={24}/>
                                                         </Button>
@@ -381,7 +379,7 @@ const Invoice = () => {
                                                         </FormGroup>
                                                     </div>
                                                     <div className='col-2 d-flex butAdd'>
-                                                        <Button color="warning" className='btn-lg mt-auto' disabled={user.profile_type_id == Profiles.Customer}
+                                                        <Button color="warning" outline className='btn-lg mt-auto' disabled={user.profile_type_id == Profiles.Customer}
                                                                 onClick={(e) => handleAddServices(e)}>
                                                             <FaPlus size={24}/>
                                                         </Button>
@@ -429,33 +427,38 @@ const Invoice = () => {
                     </div>
                 </div>
                 {/* SECOND COLUMN */}
-                <div className='col-3'>
+                <div className='col-3 sideR'>
                     {/* Content second collun */}
                     <h1>Invoice</h1>
                     {/* invoice list */}
+                    
+                    {/* header */}
                     <div id='dataInvoice' className="row GGtable">
                         <div>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>
-                                        <ul>
-                                            <li><b>Client: </b>{invoice.clientName}</li>
-                                            <li><b>Vehicle: </b>{invoice.vehicleModel}</li>
-                                            <li><b>Register: </b>{invoice.vehicleRegister}</li>
-                                        </ul>
-                                    </td>
-                                    <td className='align-top' style={{paddingLeft: '16px'}}>
-                                        <ul>
-                                            <li><b>Date: </b>{new Date(invoice.date).toDateString()}</li>
-                                            <li><b>Service: </b>{invoice.bookingType}</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                </thead>
-                            </table>
+                            <div className='container ivStyle'>
+                                <div className='row'>
+                                    <div className='row col-12'>
+                                        <div className='col-6'>
+                                            <b>Client: </b>{invoice.clientName}
+                                        </div>
+                                        <div className='col-6'>
+                                            <b>Date: </b>{invoice.date}
+                                        </div>
+                                    </div>
+                                    <div className='col-12'>
+                                        <b>Vehicle: </b>{invoice.vehicleModel}
+                                    </div>
+                                    <div className='col-12'>
+                                        <b>Register: </b>{invoice.vehicleRegister}
+                                    </div>
+                                    <div className='col-12'>
+                                        <b>Service: </b>{invoice.bookingType}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    {/* list parts invoice */}
                     <div id='partList' className="row">
                         <p>Parts list</p>
                         <table className="table">

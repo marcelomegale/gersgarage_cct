@@ -627,12 +627,18 @@ margin: 40px 0;
 
 .dataInvoice li{
     display: inline-block;
-    margin-right: 10px; /* Adicione um espaçamento horizontal opcional entre os itens */
+    margin-right: 10px; /* add hozintal space between itens  */
 }
 
-#partList, #closeInvoice{
-    border: 1px solid #4F4F4F;
+#partList{
+    border: 1px solid #FFA500;
     padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    margin-right: 40px;
+}
+
+#closeInvoice{
     border-radius: 10px;
     margin-bottom: 4px;
     margin-right: 40px;
@@ -667,10 +673,16 @@ margin: 40px 0;
 
 .GGtable{
     /* background-color: #d1d0d0; */
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 10px;
     margin-bottom: 4px;
     margin-right: 40px;
+}
+
+.ivStyle{
+    background-color: #FFA50026;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .statusList{
@@ -718,8 +730,8 @@ margin: 40px 0;
 
 .reservatioDetails{
     border-radius: 10px;
-    background-color: #d1d0d0;
-    padding: 10px 40px;
+    background-color:#FFA50026;
+    padding: 10px 20px;
     margin-bottom: 20px;
 }
 
