@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import {Label, Button} from 'reactstrap';
 import {Link, useLocation} from "react-router-dom";
 import {FaFolderOpen} from 'react-icons/fa';
@@ -96,7 +96,49 @@ const Management = () => {
                 <div className='col-9 sideL'>
                     <h1>Management Area</h1>
                     <div className='dashboards'>
-                        <div className='titTableService'>Scheduled services</div>
+                        {/* filters bar */}
+                        <div id='filterBar' className="container">
+                            <div className="row">
+                                <div className="col-12 w-100">
+                                <div className="d-flex align-items-center">
+                                <div className='titTableService'>Scheduled services: </div>
+                                    <form className="form-inline">
+                                    <div className="form-group mr-3">
+                                        {/* <label htmlFor="select1" className="mr-2">Select 1:</label> */}
+                                        <select className="form-control w-100" id="select1">
+                                        <option>Opção 1</option>
+                                        <option>Opção 2</option>
+                                        <option>Opção 3</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group mr-3">
+                                        {/* <label htmlFor="select2" className="mr-2">Select 2:</label> */}
+                                        <select className="form-control" id="select2">
+                                        <option>Opção 1</option>
+                                        <option>Opção 2</option>
+                                        <option>Opção 3</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group">
+                                        {/* <label htmlFor="select3" className="mr-2">Select 3:</label> */}
+                                        <select className="form-control" id="select3">
+                                        <option>Opção 1</option>
+                                        <option>Opção 2</option>
+                                        <option>Opção 3</option>
+                                        </select>
+                                    </div>
+                                    <Button>
+                                        Filter
+                                    </Button>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                    {/* end filter bar */}
+                        {/* <div>
+                            <div className='titTableService'>Scheduled services</div>
+                        </div> */}
                         {/* Linst booking */}
                         <table className="table table-striped table-bordered bdTable">
                             <thead>

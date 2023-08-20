@@ -18,6 +18,10 @@ import {Profiles} from "../utilities/Enums";
 import FormikComboBox from "../components/FormikComboBox";
 import {Link} from "react-router-dom";
 import {FaFolderOpen} from "react-icons/fa";
+import { MdEdit } from 'react-icons/md';
+import { BsTrash, BsPerson } from 'react-icons/bs';
+import { IoIosCar } from 'react-icons/io';
+import { AiOutlineCalendar } from 'react-icons/ai';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -181,12 +185,16 @@ const Profile = () => {
           <div className="PgTitle">Hello {profileData.firstname} {profileData.surname}</div>
           <div className="PgSubTitle">What do you want to do today?</div>
           <div className='row profileContent'>
+            {/* first collun */}
             <div className='col-3'>
               <Card>
                 <CardHeader>
-                  <Button color="link" onClick={toggle1} className="text-left">
-                    Profile
-                  </Button>
+                <button type="button" class="btn btn-light btn-lg btn-block w-100 lft" onClick={toggle1} >
+                  <BsPerson size={24}/> Profile
+                </button>
+                {/* <Button color="link" onClick={toggle1} className="text-left">
+                    <BsPerson size={24}/> Profile
+                </Button> */}
                 </CardHeader>
                 <Collapse isOpen={isOpen1}>
                   <CardBody>
@@ -208,48 +216,49 @@ const Profile = () => {
               </Card>
               <Card>
                 <CardHeader>
-                  <Button color="link" onClick={toggle2} className="text-left">
-                    Vehicle
-                  </Button>
+                <button type="button" class="btn btn-light btn-lg btn-block w-100 lft" onClick={toggle2} >
+                <IoIosCar size={24}/> Vehicle
+                </button>
                 </CardHeader>
                 <Collapse isOpen={isOpen2}>
                   <CardBody> 
-                    <div className="mb-2">
-                      <Button block outline onClick={(e) => toggleModalVehicle()}>+ Add New</Button>
-                    </div>
                     {vehiclesData.map((vehicle) => (
-                      <div
-                        key={vehicle.id}
-                        className="d-flex justify-content-between align-center"
-                        style={{ borderTop: "1px solid black", padding: "5px" }}
-                      >
+                      <div key={vehicle.id} className="d-flex justify-content-between align-center profDivisor">
                         <div>
-                          <div>{vehicle.manufacturer}</div>
+                          <div><b>{vehicle.manufacturer}</b></div>
                           <div><span>Reg:</span> {vehicle.register}</div>
                         </div>
                         <div>
-                          <Button outline size="sm" onClick={(e) => toggleModalVehicle(vehicle.id)}>Edit</Button>
-                          <Button outline size="sm" onClick={(e) => removeVehicle(vehicle.id)}>X</Button>
+                          <Link size="sm" onClick={(e) => toggleModalVehicle(vehicle.id)}><MdEdit size={24} color='#FFA500'/></Link>
+                          <Link className='icoSpace' size="sm" onClick={(e) => removeVehicle(vehicle.id)}><BsTrash size={24} color='#FFA500'/></Link>
                         </div>
                       </div>
                     ))}
+                    <div className="mb-2">
+                      <Button outline color="warning" className='w-100' onClick={(e) => toggleModalVehicle()}>+ Add New</Button>
+                    </div>
                   </CardBody>
                 </Collapse>
               </Card>
               <Card>
                 <CardHeader>
                   <Link to="/booking" className="text-left">
-                    <Button color="link" className="text-left" style={{cursor: "pointer"}}>
-                      Book a new appointment
-                    </Button>
+                    <button type="button" class="btn btn-light btn-lg btn-block w-100 lft" >
+                      <AiOutlineCalendar size={24}/> Book a new appointment
+                    </button>
+                    {/* <Button color="link" className="text-left" style={{cursor: "pointer"}}>
+                      <AiOutlineCalendar size={24}/> Book a new appointment
+                    </Button> */}
                   </Link>
                 </CardHeader>
               </Card>
             </div>
+
+             {/* second collun */}
             <div className='col-9'>
-              <table className="table table-striped">
+            <table className="table table-striped table-bordered bdTable">
                 <thead>
-                <tr>
+                <tr className='headTable'>
                   <th>Date</th>
                   <th>Vehicle</th>
                   <th>Service</th>
@@ -264,7 +273,7 @@ const Profile = () => {
                 )}
                 {bookingsData.map((row) => (
                 <tr key={row.id}>
-                  <td>{new Date(row.date).toDateString()}</td>
+                  <td>{row.date}</td>
                   <td>{row.vehicleModel}</td>
                   <td>{row.bookingType}</td>
                   <td>€ {row.tPrice || 0.00}</td>

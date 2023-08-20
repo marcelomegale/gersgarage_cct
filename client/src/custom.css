@@ -519,6 +519,14 @@ margin: 40px 0;
     margin: 30px auto;
   }
 
+  .profDivisor{
+    border-bottom: 1px solid #aeaeae;
+    padding: 0 0 20px 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+
   .espaco-retratil{
     padding: 0;
     background-color: #808080;
@@ -583,6 +591,17 @@ margin: 40px 0;
     display: flex;
     justify-content:center;
     padding: 10px;
+}
+
+.icoSpace{
+    margin-left: 15px;
+}
+
+.card-header {
+    padding: 0;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 .BookingTit{
@@ -775,6 +794,14 @@ margin: 40px 0;
     justify-content: left;
     align-items: center;
 }
+/* --------------- */
+
+/* MANEGER PAGE */
+
+#filterBar, .container{
+    margin: 0;
+}
+
 
 /* --------------- */
 

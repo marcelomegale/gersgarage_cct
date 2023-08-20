@@ -238,6 +238,9 @@ const Invoice = () => {
                                 <li><b>Service: </b>{invoice.bookingType}</li>
                             </ul>
                         </div>
+                        <div className='reservatioDetails'>
+                            Description: {invoice.description}
+                        </div>
                         <div className='row w-100'>
                             <div className='col-4'>
                                 <div id='staffBoard' className='col'>
