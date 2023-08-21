@@ -4,7 +4,8 @@ const config = require('../config')
 
 const fullGetQuery = `
         select b.id,
-               DATE_FORMAT(b.date, '%d/%m/%Y') as date,
+               DATE_FORMAT(b.date, '%d/%m/%Y') as formatedDate,
+               b.date as date,
                concat(client.firstname, ' ', client.surname) as clientName,
                concat(vm.name, ' - ', vmn.name) as vehicleModel,
                v.register as vehicleRegister,
@@ -16,6 +17,7 @@ const fullGetQuery = `
                booking_type_id,
                staff_id,
                booking_status_id,
+               b.description,
             (select sum(price) from BOOKING_ITEM bi where bi.booking_id = b.id) as tPrice
         from BOOKING b
                  inner join VEHICLE v on b.vehicle_id = v.id
@@ -55,9 +57,21 @@ async function getDetails() {
     }
 }
 
-async function getAll() {
+async function getAll(status, staff, initialDate, finalDate) {
+    let statusFilter = status ? ' and bs.id = ' + status : '';
+    let staffFilter = staff ? ' and staff_id = ' + staff : '';
+    let initialDateFilter = initialDate ? ` and date >=  '${initialDate}'` : '';
+    let finalDateFilter = finalDate ? ` and date <=  '${finalDate}'` : '';
+
     const query = `
         ${fullGetQuery}
+        where 1=1
+        ${statusFilter} 
+        ${staffFilter} 
+        ${initialDateFilter} 
+        ${finalDateFilter} 
+        
+        order by b.date
     `;
 
     const rows = await db.query(query);
@@ -128,7 +142,7 @@ async function getItemsById(id) {
     const query = `
         SELECT id,
                booking_id,
-               category_name,
+               category_name as categoryName,
                name,
                price
         FROM BOOKING_ITEM
@@ -145,14 +159,14 @@ async function getItemsById(id) {
 
 async function validateCanSchedule(date, bookingSize) {
     const query = `
-        select coalesce(total_time_available, 0)  - coalesce(total_time_occupied, 0) as availableTime
-        from (select coalesce(sum(bt.timeslot_size), 0) as total_time_occupied,
-                     coalesce((select count(*) * 4 from USER_PROFILE where profile_type_id = 2),0) as total_time_available
-              from BOOKING b
-           inner join BOOKING_TYPE bt on b.booking_type_id = bt.id
-              where date = ?) t
+    select coalesce(total_time_available, 0)  - coalesce(total_time_occupied, 0) as availableTime
+    from (select coalesce(sum(bt.timeslot_size), 0) as total_time_occupied,
+                 coalesce((select count(*) * 4 from USER_PROFILE where profile_type_id = 2),0) as total_time_available
+          from BOOKING b
+       inner join BOOKING_TYPE bt on b.booking_type_id = bt.id
+          where date = ? and b.booking_status_id <> 6) t
 
-    `;
+`;
 
     const rows = await db.query(query, [date]);
     const data = helpers.emptyOrRows(rows);
@@ -172,6 +186,14 @@ async function create(vehicleId, serviceType, bookingDate, timeslot, description
     `;
 
     const result = await db.query(query, [vehicleId, serviceType, bookingDate, timeslot, description]);
+
+    const query2 = `
+        INSERT INTO BOOKING_ITEM(booking_id, category_name, name, price)
+        SELECT (select max(id) from booking), 'Service', name, price
+        FROM BOOKING_TYPE WHERE id = ?;
+    `;
+
+    const result2 = await db.query(query2, [serviceType]);
 
     let message = `Error creating record on table: BOOKING`;
 

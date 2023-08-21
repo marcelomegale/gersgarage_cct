@@ -9,7 +9,7 @@ router.get("/", verifyToken, async (req, res, next) => {
     try {
         res.json(
             success(
-                await db.getAll()
+                await db.getAll(req.query.status, req.query.staff, req.query.initialDate, req.query.finalDate)
             )
         )
     } catch (err) {
