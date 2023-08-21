@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Field, ErrorMessage} from 'formik';
 import axios from 'axios';
 
-const FormikComboBox = ({name, type, filtered, filter, ...props}) => {
+const FormikComboBox = ({name, type, filtered, filter, placeholder='Select an option', showFormGroup=true, ...props}) => {
   const [options, setOptions] = useState([]);
 
   const fetchData = async () => {
@@ -29,10 +29,10 @@ const FormikComboBox = ({name, type, filtered, filter, ...props}) => {
   }, [filter]);
 
   return (
-    <div className='form-group'>
-      <label htmlFor={name}>{props.label}</label>
+    <div className={showFormGroup ? 'form-group' : ''}>
+      {props.label && <label htmlFor={name}>{props.label}</label>}
       <Field as='select' name={name} className='form-control' {...props} disabled={(filtered && (!filter || !options.length) ) }>
-        <option value='' label='Select an option' />
+        <option value='' label={placeholder} />
         {options.map(option => (
           <option key={option.id} value={option.id} label={option.name}/>
         ))}
