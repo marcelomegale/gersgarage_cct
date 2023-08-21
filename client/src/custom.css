@@ -747,12 +747,26 @@ margin: 40px 0;
     text-align: center;
 }
 
-.reservatioDetails{
+.infoBooking{
+    background-color: #FFA50010;
     border-radius: 10px;
-    background-color:#FFA50026;
-    padding: 10px 20px;
     margin-bottom: 20px;
+    border: 1px solid #FFA50026;
 }
+
+.dataBooking{
+    background-color:#FFF2E0;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: 2px solid #FFF;
+}
+
+.dscriBooking{
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+
 
 .dashboards{
     /* border: 1px solid red; */

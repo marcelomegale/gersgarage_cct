@@ -273,7 +273,7 @@ const Profile = () => {
                 )}
                 {bookingsData.map((row) => (
                 <tr key={row.id}>
-                  <td>{row.date}</td>
+                  <td>{row.formatedDate}</td>
                   <td>{row.vehicleModel}</td>
                   <td>{row.bookingType}</td>
                   <td>€ {row.tPrice || 0.00}</td>
