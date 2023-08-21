@@ -49,7 +49,7 @@ ALTER TABLE BOOKING_ITEM
     add foreign key (booking_id) references BOOKING(id);
 
 create view view_staff as
-select id, username as name from USER_PROFILE
+select id, firstname as name from USER_PROFILE
 where profile_type_id = 2
   and active = 1;
 

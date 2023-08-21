@@ -33,3 +33,5 @@ values ('Mats', 15.00),
        ('Light Bulbs', 50.00),
        ('Wheels', 200.00),
        ('Break Lights', 120.00);
+
+INSERT INTO BOOKING_STATUS (name) VALUES ('Cancelled')
