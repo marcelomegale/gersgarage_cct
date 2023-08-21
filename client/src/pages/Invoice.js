@@ -229,17 +229,19 @@ const Invoice = () => {
                         Register Nº {invoice.id}
                     </h1>
                     <div id='Dashboards' className='dashboards'>
-                        <div className='reservatioDetails'>
-                            <ul className='dataInvoice'>
-                                <li><b>Client: </b>{invoice.clientName}</li>
-                                <li><b>Vehicle: </b>{invoice.vehicleModel} </li>
-                                <li><b>Register: </b>{invoice.vehicleRegister}</li>
-                                <li><b>Date: </b>{new Date(invoice.date).toDateString()}</li>
-                                <li><b>Service: </b>{invoice.bookingType}</li>
-                            </ul>
-                        </div>
-                        <div className='reservatioDetails'>
-                            Description: {invoice.description}
+                        <div className='infoBooking'>
+                            <div className='dataBooking'>
+                                <ul className='dataInvoice'>
+                                    <li><b>Client: </b>{invoice.clientName}</li>
+                                    <li><b>Vehicle: </b>{invoice.vehicleModel} </li>
+                                    <li><b>Register: </b>{invoice.vehicleRegister}</li>
+                                    <li><b>Date: </b>{invoice.formatedDate}</li>
+                                    <li><b>Service: </b>{invoice.bookingType}</li>
+                                </ul>
+                            </div>
+                            <div className='dscriBooking'>
+                                <b>Description:</b> {invoice.description}
+                            </div>
                         </div>
                         <div className='row w-100'>
                             <div className='col-4'>
@@ -248,7 +250,7 @@ const Invoice = () => {
                                     <div className='borderTable cardInvoice'>
                                         <div className='cardTitle'>Responsible Staff</div>
                                         <div className='cardStaff'><span>Current staff:</span> <b>{invoice.staffName || "--"}</b></div>
-                                        { user.profile_type_id == Profiles.Management &&
+                                        { user.profile_type_id === Profiles.Management &&
                                             <>
                                             <div className='row'>
                                                 <div className='col'>
@@ -280,7 +282,7 @@ const Invoice = () => {
                                     <div className='borderTable cardInvoice'>
                                         <div className='cardTitle'>Status Service</div>
                                         <div className='cardStaff'><span>Current status:</span> <b>{invoice.bookingStatus}</b></div>
-                                        { user.profile_type_id == Profiles.Management &&
+                                        { user.profile_type_id !== Profiles.Customer &&
                                         <>
                                             <div className='row'>
                                                 <div className='col'>
@@ -407,7 +409,7 @@ const Invoice = () => {
                                                             <td style={{ width: '60%' }} className='lft'>{row.name}</td>
                                                             <td style={{ width: '40%' }} className='rgt'>€ {row.price}</td>
                                                             <td style={{ width: '10%' }} className='rgt'>
-                                                                { user.profile_type_id == Profiles.Management &&
+                                                            { (user.profile_type_id != Profiles.Customer && row.categoryName != 'Service') &&
                                                                     <>
                                                                         <Button color="white" style={{cursor: "pointer"}} onClick={(e) => handleDeleteRowItem(row.id)}>
                                                                             <BsTrashFill size={24} color="#FFA500" />
@@ -416,6 +418,7 @@ const Invoice = () => {
                                                             </td>
                                                         </tr>
                                                     ))}
+                                                    
                                                     { !invoiceItems.length && <>
                                                         <tr><td colSpan={3}>Nothing here yet.</td></tr>
                                                     </>}
@@ -445,7 +448,7 @@ const Invoice = () => {
                                             <b>Client: </b>{invoice.clientName}
                                         </div>
                                         <div className='col-6'>
-                                            <b>Date: </b>{invoice.date}
+                                            <b>Date: </b>{invoice.formatedDate}
                                         </div>
                                     </div>
                                     <div className='col-12'>
@@ -478,6 +481,13 @@ const Invoice = () => {
                                     <td style={{ width: '40%' }} className='rgt'>€ {row.price}</td>
                                 </tr>
                             ))}
+                            { invoiceItems.length &&
+                            <>
+                                <tr>
+                                    <td><b>Total:</b></td>
+                                    <td colSpan={2}  className='rgt'><b>€ {invoiceItems.reduce((acc, item) => acc + (+item.price || 0), 0)} </b></td>
+                                </tr>
+                            </>}
                             { !invoiceItems.length && <>
                                 <tr><td colSpan={2}>Nothing here yet.</td></tr>
                             </>}
@@ -485,7 +495,7 @@ const Invoice = () => {
                         </table>
                     </div>
                     <div id='closeInvoice' className="row mb-5">
-                        <button className='btn btn-warning w-100'>
+                        <button className='btn btn-warning w-100' onClick={() => window.print()}>
                             Finish Invoice
                         </button>
                     </div>
