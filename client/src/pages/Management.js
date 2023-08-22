@@ -9,6 +9,7 @@ import {AuthContext} from "../components/AuthContext";
 import {ErrorMessage, Field, Formik, Form} from "formik";
 import * as Yup from "yup";
 import FormikComboBox from "../components/FormikComboBox";
+import {Profiles} from "../utilities/Enums";
 
 const Management = () => {
   const {user} = useContext(AuthContext);
@@ -217,17 +218,20 @@ const Management = () => {
         {/* Content second collun */}
         <div className='col-3 sideR'>
           {/* tabela de Staffs */}
-          <div id='staffList' className="row GGtable">
+          <div id='staffList' className="row GGtableStaff">
             <div className='container'>
               <div className='row'>
                 <div className='col-10 algCT'>
                   <div className='titTableService '>Staff management</div>
                 </div>
                 <div className='col-2'>
+                { user.profile_type_id === Profiles.Management &&
+                    <>
                   <Button color="link" className="text-center" style={{cursor: "pointer"}}
                           onClick={(e) => toggleModalStaff()}>
                     <BsPlus size={32} color='#FFA500'/>
                   </Button>
+                </>}
                 </div>
               </div>
             </div>

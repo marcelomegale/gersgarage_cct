@@ -736,6 +736,14 @@ margin: 40px 0;
     margin-right: 40px;
 }
 
+.GGtableStaff{
+    /* background-color: #d1d0d0; */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    margin-right: 40px;
+}
+
 .ivStyle{
     background-color: #FFA50026;
     border-radius: 10px;
