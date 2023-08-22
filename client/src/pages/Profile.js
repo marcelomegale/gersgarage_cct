@@ -24,7 +24,7 @@ import { IoIosCar } from 'react-icons/io';
 import { AiOutlineCalendar } from 'react-icons/ai';
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, showToast } = useContext(AuthContext);
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
@@ -115,6 +115,8 @@ const Profile = () => {
         phone: values.phone,
       });
 
+      showToast('success', "Profile information was updated!") // show message
+
       setProfileData(response.data.data);
       toggleModalProfile();
     } catch(err) {
@@ -124,12 +126,14 @@ const Profile = () => {
       setButtonTextProfile('Confirm');
     }
   };
-  const handleSubmitVehicle = async (values) => {
+  const handleSubmitVehicle = async (values) => { /// send the datas
     try {
       setButtonTextProfile('Saving...')
       let response;
       if(values.id) response = await Axios.put(`/vehicle/${values.id}/profile/${user.id}`, values);
       else response = await Axios.post(`/vehicle/profile/${user.id}`, values);
+
+      showToast('success', "Vehicle information was updated!") // show message
 
       await loadVehicles();
 

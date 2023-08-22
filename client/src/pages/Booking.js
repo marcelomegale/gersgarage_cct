@@ -11,7 +11,7 @@ import {AuthContext} from "../components/AuthContext";
 
 const Booking = () => {
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const {user, showToast} = useContext(AuthContext);
 
   const [modal, setModal] = useState(false);
   const [bookingData, setBookingData] = useState({});
@@ -57,6 +57,7 @@ const Booking = () => {
     try {
       setButtonText('Saving...')
       const response = await Axios.post(`/booking/client/${user.id}`, values);
+      showToast('success', "Your appointment was scheduled, to cancel contact us!") // show message
       navigate('/profile', {routeState: {  }})
     } catch (err) {
       console.log(err);
@@ -73,13 +74,18 @@ const Booking = () => {
     });
   });
 
-  const bookingValidationSchema = Yup.object().shape({
-    vehicleId: Yup.string().required('Vehicle is required'),
-    serviceType: Yup.string().required('Service Type is required'),
-    bookingDate: Yup.date().required('Date is required').notSunday('Date should not be a Sunday.'),
-    timeslot: Yup.string().required('Timeslot is required'),
-    description: Yup.string()
-  });
+  const today = new Date();
+// Resetting the hours, minutes, seconds, and milliseconds to ensure it represents the start of the day
+today.setHours(0, 0, 0, 0);
+
+//validation rules
+const bookingValidationSchema = Yup.object().shape({
+  vehicleId: Yup.string().required('Vehicle is required'),
+  serviceType: Yup.string().required('Service Type is required'),
+  bookingDate: Yup.date().required('Date is required').notSunday('Date should not be a Sunday.').min(today, 'Date cannot be before today'),
+  timeslot: Yup.string().required('Timeslot is required'),
+  description: Yup.string()
+});
 
   return (
     <div className='container-fluid'>
