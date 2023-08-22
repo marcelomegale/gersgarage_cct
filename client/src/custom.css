@@ -640,7 +640,7 @@ margin: 40px 0;
 /* MANAGEMENT/INVOICE STYLES */
 
 .sideL .btn, button{
-    padding: 0;
+    /* padding: 0; */
     margin: 0;
 }
 
@@ -717,9 +717,10 @@ margin: 40px 0;
 }
 
 .cardTitle{
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
-    font-weight: 700    ;
+    font-weight: 700;
+    font-size: 1.2em;
 }
 
 .borderTable{

@@ -172,7 +172,7 @@ const Management = () => {
                               </div>
                             </div>
                             <div className="col-1">
-                              <Button color="warning" className="btn" type="submit">{buttonTextFilter}</Button>
+                              <button type='submit' className='btn btn-warning btn-md'>{buttonTextFilter}</button>
                             </div>
                           </div>
                         </div>
