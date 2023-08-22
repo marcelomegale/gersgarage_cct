@@ -1,15 +1,16 @@
 import ImgRegister from '../assets/img_register.jpg';
 
 import {Button, Label} from 'reactstrap';
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import Axios from "axios";
 import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
 import {ErrorMessage, Field, Formik, Form} from "formik";
+import {AuthContext} from "../components/AuthContext";
 
 const Register = () => {
     const navigate = useNavigate();
-
+    const {user, showToast} = useContext(AuthContext); // show message
     const [error, setError] = useState(null);
     const [buttonText, setButtonText] = useState("Register");
 
@@ -19,6 +20,8 @@ const Register = () => {
 
             values.username = values.email
             const response = await Axios.post(`/auth/register/client`, values);
+
+            showToast('success', "Your register was made with success! Make the login please!") // show message
 
             navigate('/login', {routeState: { message: 'User created successfuly, you can log in now.'}})
         } catch (err) {
