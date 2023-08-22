@@ -663,6 +663,43 @@ margin: 40px 0;
     margin-right: 40px;
 }
 
+.dataInvoiceMd li{
+    display: inline-block;
+    margin-right: 10px; /* add hozintal space between itens  */
+}
+
+#partListMd{
+    border: 1px solid #FFA500;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+
+}
+
+#closeInvoiceMd{
+    border-radius: 10px;
+    margin-bottom: 4px;
+
+}
+
+.GGtableMd{
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.headerMd{
+    margin: 0 0 20px 0;
+}
+
+.logoMd{
+    padding-right: 15px;
+    padding-left: 0;
+}
+.titMd{
+    font-weight: 700;
+    font-size: 1.3em;
+    padding-left: 40px;
+}
 #dataInvoice ul{
     margin-bottom: 0;
 }

@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; // modal invoice
 import {FaArrowLeft, FaPlus, FaSync} from 'react-icons/fa';
 import Axios from "axios";
 import {useNavigate, useParams} from 'react-router-dom';
@@ -8,6 +9,7 @@ import {Profiles} from "../utilities/Enums";
 import FormikComboBox from "../components/FormikComboBox";
 import {BsTrashFill} from "react-icons/bs";
 import {AuthContext} from "../components/AuthContext";
+import logo_gg from "../assets/logotype.png";
 
 const Invoice = () => {
     const navigate = useNavigate();
@@ -26,6 +28,12 @@ const Invoice = () => {
     const [optionsParts, setOptionsParts] = useState([]);
     const [optionsAccessories, setOptionsAccessories] = useState([]);
     const [optionsServices, setOptionsServices] = useState([]);
+
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+    setModal(!modal);
+    };
 
     const loadInvoice = async () => {
         const response = await Axios.get(`/booking/${id}`);
@@ -494,13 +502,117 @@ const Invoice = () => {
                             </tbody>
                         </table>
                     </div>
+                    { user.profile_type_id === Profiles.Management &&
+                    <>
                     <div id='closeInvoice' className="row mb-5">
-                        <button className='btn btn-warning w-100' onClick={() => window.print()}>
+                        {/* <button className='btn btn-warning w-100' onClick={() => window.print()}>
+                            Finish Invoice
+                        </button> */}
+                        <button className='btn btn-warning w-100' onClick={toggleModal}>
                             Finish Invoice
                         </button>
                     </div>
+                    </>}
                 </div>
             </div>
+
+            {/* Modal */}
+            <Modal isOpen={modal} toggle={toggleModal} className="modal-dialog-centered">
+                {/* <ModalHeader toggle={toggleModal}>Finish Invoice</ModalHeader> */}
+                <ModalBody>
+                {/* Conteúdo da sua modal aqui */}
+                <div className='container'>
+                <div className='row'>
+                <div className='col-12'>
+                    {/* Content second collun */}
+                    <div class="row headerMd">
+                        <div class="col-md-6 logoMd">
+                            <img src={logo_gg} alt="Logo Ger's Garage" className="logo-img img-fluid" />
+                        </div>
+                        <div class="col-md-6 titMd text-left">
+                            <div>Close Invoice</div>
+                        </div>
+                    </div>
+                    {/* invoice list */}                    
+                    {/* header */}
+                    <div id='dataInvoiceMd' className="row GGtableMd">
+                        <div>
+                            <div className='container ivStyle'>
+                                <div className='row'>
+                                    <div className='row col-12'>
+                                        <div className='col-6'>
+                                            <b>Client: </b>{invoice.clientName}
+                                        </div>
+                                        <div className='col-6'>
+                                            <b>Date: </b>{invoice.formatedDate}
+                                        </div>
+                                    </div>
+                                    <div className='col-12'>
+                                        <b>Vehicle: </b>{invoice.vehicleModel}
+                                    </div>
+                                    <div className='col-12'>
+                                        <b>Register: </b>{invoice.vehicleRegister}
+                                    </div>
+                                    <div className='col-12'>
+                                        <b>Service: </b>{invoice.bookingType}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* list parts invoice */}
+                    <div id='partListMd' className="row">
+                        <p>Parts list</p>
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th className='rgt'>Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {invoiceItems.map((row) => (
+                                <tr key={row.id}>
+                                    <td style={{ width: '60%' }} className='lft'>{row.name}</td>
+                                    <td style={{ width: '40%' }} className='rgt'>€ {row.price}</td>
+                                </tr>
+                            ))}
+                            { invoiceItems.length &&
+                            <>
+                                <tr>
+                                    <td><b>Total:</b></td>
+                                    <td colSpan={2}  className='rgt'><b>€ {invoiceItems.reduce((acc, item) => acc + (+item.price || 0), 0)} </b></td>
+                                </tr>
+                            </>}
+                            { !invoiceItems.length && <>
+                                <tr><td colSpan={2}>Nothing here yet.</td></tr>
+                            </>}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id='closeInvoiceMd' className="row mb-5">
+                        {/* <button className='btn btn-warning w-100' onClick={() => window.print()}>
+                            Finish Invoice
+                        </button> */}
+                        <button className='btn btn-warning w-100' onClick={toggleModal}>
+                            Pay
+                        </button>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+                </ModalBody>
+                {/* <ModalFooter>
+                    <Button color="secondary" onClick={toggleModal}>
+                    Close
+                    </Button>
+                    <Button color="primary" onClick={toggleModal}>
+                    Confirm
+                    </Button>
+                </ModalFooter> */}
+             </Modal>
+
         </div>
     );
 }
