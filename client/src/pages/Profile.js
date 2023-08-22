@@ -273,7 +273,7 @@ const Profile = () => {
                 </thead>
                 <tbody>
                 {!bookingsData.length && (
-                  <tr><td colSpan={5}>Nothing here yet.</td></tr>
+                  <tr><td colSpan={6}>Nothing here yet.</td></tr>
                 )}
                 {bookingsData.map((row) => (
                 <tr key={row.id}>
