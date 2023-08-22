@@ -98,7 +98,7 @@ const Invoice = () => {
                 await loadInvoice();
                 await loadInvoiceItems();
 
-                if(user.profile_type_id  == Profiles.Management) {
+                if(user.profile_type_id  !== Profiles.Customer) {
                     await loadComboStaff();
                     await loadComboStatus();
                     await loadComboParts();
@@ -286,7 +286,6 @@ const Invoice = () => {
                                     </div>
                                 </div>
                                 <div id='statusBoard' className='col'>
-
                                     <div className='borderTable cardInvoice'>
                                         <div className='cardTitle'>Status Service</div>
                                         <div className='cardStaff'><span>Current status:</span> <b>{invoice.bookingStatus}</b></div>
@@ -417,7 +416,7 @@ const Invoice = () => {
                                                             <td style={{ width: '60%' }} className='lft'>{row.name}</td>
                                                             <td style={{ width: '40%' }} className='rgt'>€ {row.price}</td>
                                                             <td style={{ width: '10%' }} className='rgt'>
-                                                            { (user.profile_type_id != Profiles.Customer && row.categoryName != 'Service') &&
+                                                            { (user.profile_type_id !== Profiles.Customer && row.categoryName !== 'Service') &&
                                                                     <>
                                                                         <Button color="white" style={{cursor: "pointer"}} onClick={(e) => handleDeleteRowItem(row.id)}>
                                                                             <BsTrashFill size={24} color="#FFA500" />
